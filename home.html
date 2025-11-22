@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>SLFA — Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root{--accent:#1e7b2c;--muted:#6b7280;--bg:#f8fafc;--card:#ffffff;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;color:#0f172a}
+        *{box-sizing:border-box}
+        body{margin:0;background:linear-gradient(180deg,var(--bg),#eef2f7);-webkit-font-smoothing:antialiased}
+        .container{max-width:1100px;margin:0 auto;padding:1rem}
+        header{background:rgba(255,255,255,0.85);backdrop-filter:blur(6px);border-bottom:1px solid rgba(15,23,42,0.06)}
+        .nav{display:flex;align-items:center;justify-content:space-between}
+        .brand{display:flex;align-items:center;gap:0.75rem;text-decoration:none;color:inherit}
+        .logo{width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;background:#fff}
+        nav ul{list-style:none;padding:0;margin:0;display:flex;gap:0.5rem}
+        nav a{padding:0.5rem 0.6rem;text-decoration:none;color:var(--muted);border-radius:6px;font-weight:600}
+        nav a.active{color:var(--accent);background:rgba(30,123,44,0.08)}
+        .hero{display:grid;grid-template-columns:1fr 360px;gap:1rem;margin:1rem 0}
+        .card{background:var(--card);border-radius:12px;padding:1.25rem;box-shadow:0 6px 20px rgba(2,6,23,0.06)}
+        .cta{margin-top:1rem;display:flex;gap:0.6rem}
+        .btn{background:var(--accent);color:#fff;padding:0.6rem 0.9rem;border-radius:8px;border:0;cursor:pointer;font-weight:600}
+        .lead{color:var(--muted);line-height:1.6}
+        footer{padding:1rem 0;margin-top:2rem;border-top:1px solid rgba(15,23,42,0.04)}
+        @media (max-width:880px){.hero{grid-template-columns:1fr}}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container nav">
+            <a class="brand" href="home.html">
+                <span class="logo" aria-hidden="true">
+                    <svg width="36" height="36" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="32" cy="32" r="30" fill="#fff"/><path d="M32 6L39 18L54 22L43 32L46 46L32 40L18 46L21 32L10 22L25 18L32 6Z" fill="#1e7b2c"/></svg>
+                </span>
+                <strong>SLFA</strong>
+            </a>
+
+            <nav aria-label="Primary">
+                <ul>
+                    <li><a href="home.html" class="active">Home</a></li>
+                    <li><a href="players.html">Players</a></li>
+                    <li><a href="matches.html">Matches</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <div class="card">
+                <h2>Welcome to the Sierra Leone Football Association</h2>
+                <p class="lead">Growing football across Sierra Leone with passion and integrity. From grassroots initiatives to national teams, the SLFA is committed to developing talent and delivering memorable experiences.</p>
+
+                <div class="cta">
+                    <a class="btn" href="about.html">Learn More</a>
+                    <a class="btn" style="background:transparent;color:var(--accent);border:1px solid rgba(30,123,44,0.12)" href="players.html">Meet Players</a>
+                </div>
+            </div>
+
+            <aside class="card">
+                <h4 style="margin:0">Latest News</h4>
+                <p class="lead" style="margin-top:0.6rem">National U-20 Trials concluded in Freetown — successful turnout and new prospects identified.</p>
+                <p class="meta">Updated: 2025-11-20</p>
+            </aside>
+        </section>
+
+        <div class="card">
+            <h3>Our Mission</h3>
+            <p class="lead">We elevate standards of football through inclusive programs, ethical governance, and strategic partnerships. By investing in coaches, referees and infrastructure, we create pathways for talent to reach professional levels.</p>
+        </div>
+
+        <footer>
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap">
+                <div>
+                    <strong>SLFA</strong>
+                    <div class="lead">Sierra Leone Football Association</div>
+                </div>
+                <div class="lead">© <span id="year">2025</span> SLFA. All rights reserved.</div>
+            </div>
+        </footer>
+    </main>
+
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

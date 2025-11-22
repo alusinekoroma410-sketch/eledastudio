@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>SLFA — Contact</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root{--accent:#1e7b2c;--muted:#6b7280;--bg:#f8fafc;--card:#ffffff;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;color:#0f172a}
+        *{box-sizing:border-box}
+        body{margin:0;background:linear-gradient(180deg,var(--bg),#eef2f7)}
+        .container{max-width:1100px;margin:0 auto;padding:1rem}
+        header{background:rgba(255,255,255,0.85);backdrop-filter:blur(6px);border-bottom:1px solid rgba(15,23,42,0.06)}
+        nav ul{list-style:none;padding:0;margin:0;display:flex;gap:0.5rem}
+        nav a{padding:0.5rem 0.6rem;text-decoration:none;color:var(--muted);border-radius:6px;font-weight:600}
+        .card{background:var(--card);border-radius:12px;padding:1.25rem;box-shadow:0 6px 20px rgba(2,6,23,0.06)}
+        form label{display:block;font-size:0.9rem;margin-bottom:0.35rem;font-weight:600}
+        form input,form textarea{width:100%;padding:0.6rem;border-radius:8px;border:1px solid #e6e9ef;font-size:0.95rem}
+        form textarea{min-height:120px}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container nav">
+            <a class="brand" href="home.html"><strong>SLFA</strong></a>
+            <nav aria-label="Primary">
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="players.html">Players</a></li>
+                    <li><a href="matches.html">Matches</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="card">
+            <h3>Contact Us</h3>
+            <p class="lead">Reach out for media enquiries, partnerships, or general questions.</p>
+
+            <form id="contactForm" novalidate>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;margin-bottom:0.6rem">
+                    <label><span>Name</span><input type="text" name="name" id="name" required placeholder="Your full name"></label>
+                    <label><span>Email</span><input type="email" name="email" id="email" required placeholder="you@example.com"></label>
+                </div>
+
+                <label><span>Subject</span><input type="text" name="subject" id="subject" required placeholder="Subject"></label>
+                <label style="margin-top:0.6rem"><span>Message</span><textarea name="message" id="message" required placeholder="Write your message here"></textarea></label>
+
+                <div style="display:flex;gap:0.6rem;margin-top:0.75rem;align-items:center">
+                    <button class="btn" type="submit" style="background:var(--accent);color:#fff;padding:0.6rem 0.9rem;border-radius:8px;border:0;">Send Message</button>
+                    <button type="button" onclick="document.getElementById('contactForm').reset()" style="background:transparent;color:var(--accent);padding:0.6rem 0.9rem;border-radius:8px;border:1px solid rgba(30,123,44,0.12)">Reset</button>
+                    <div id="formStatus" class="meta" style="margin-left:0.5rem"></div>
+                </div>
+            </form>
+
+            <p class="meta" style="margin-top:0.8rem">Alternatively, email <a href="mailto:info@slfa.sl">info@slfa.sl</a> or call +232 76 123 456</p>
+        </div>
+
+        <footer style="margin-top:1rem"><div style="display:flex;justify-content:space-between;align-items:center"><div><strong>SLFA</strong></div><div class="meta">© <span id="year">2025</span></div></div></footer>
+    </main>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+        (function(){
+            const form = document.getElementById('contactForm');
+            const status = document.getElementById('formStatus');
+            form.addEventListener('submit', async (e)=>{
+                e.preventDefault(); status.textContent = '';
+                const data = {name:form.name.value.trim(),email:form.email.value.trim(),subject:form.subject.value.trim(),message:form.message.value.trim()};
+                if(!data.name||!data.email||!data.subject||!data.message){status.textContent='Please fill all fields.';return}
+                if(!/^\S+@\S+\.\S+$/.test(data.email)){status.textContent='Please enter a valid email.';return}
+                status.textContent='Sending...';
+                await new Promise(r=>setTimeout(r,700));
+                form.reset(); status.textContent='Message sent. Thank you — we will reply soon.';
+            });
+        })();
+    </script>
+</body>
+</html>

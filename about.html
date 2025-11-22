@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>SLFA — About</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root{--accent:#1e7b2c;--muted:#6b7280;--bg:#f8fafc;--card:#ffffff;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;color:#0f172a}
+        *{box-sizing:border-box}
+        body{margin:0;background:linear-gradient(180deg,var(--bg),#eef2f7)}
+        .container{max-width:1100px;margin:0 auto;padding:1rem}
+        header{background:rgba(255,255,255,0.85);backdrop-filter:blur(6px);border-bottom:1px solid rgba(15,23,42,0.06)}
+        nav ul{list-style:none;padding:0;margin:0;display:flex;gap:0.5rem}
+        nav a{padding:0.5rem 0.6rem;text-decoration:none;color:var(--muted);border-radius:6px;font-weight:600}
+        .card{background:var(--card);border-radius:12px;padding:1.25rem;box-shadow:0 6px 20px rgba(2,6,23,0.06)}
+        .about-grid{display:grid;grid-template-columns:1fr 320px;gap:1rem}
+        .lead{color:var(--muted);line-height:1.6}
+        @media (max-width:880px){.about-grid{grid-template-columns:1fr}}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container nav">
+            <a class="brand" href="home.html"><strong>SLFA</strong></a>
+            <nav aria-label="Primary">
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="players.html">Players</a></li>
+                    <li><a href="matches.html">Matches</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="card">
+            <h3>About Us</h3>
+            <div class="about-grid">
+                <div>
+                    <h2>History and Purpose</h2>
+                    <p class="lead">Founded to organize and chart the growth of football in Sierra Leone, the SLFA oversees domestic competitions, amateur and professional leagues, national teams, and youth development. We operate with transparency, fostering partnerships with clubs, communities and international federations to deliver sustainable progress.</p>
+
+                    <h4>What we do</h4>
+                    <ul>
+                        <li>Organize national competitions and cup tournaments.</li>
+                        <li>Develop coaching and refereeing standards.</li>
+                        <li>Support grassroots academies and school programs.</li>
+                        <li>Manage national teams and international representation.</li>
+                    </ul>
+
+                    <h4 style="margin-top:1rem">Values</h4>
+                    <p class="lead">Integrity, inclusion, excellence and community. We are committed to providing equal opportunities and creating a safe, competitive environment for all participants.</p>
+                </div>
+
+                <aside>
+                    <figure style="margin:0">
+                        <img src="https://images.unsplash.com/photo-1517927033932-b3d2c0a7b0b9?q=80&w=900&auto=format&fit=crop&crop=faces" alt="Football stadium" style="width:100%;height:220px;object-fit:cover;border-radius:10px">
+                        <figcaption class="lead" style="margin-top:0.6rem">National stadium — hosting community and national events.</figcaption>
+                    </figure>
+
+                    <div style="margin-top:1rem;padding:0.8rem;background:linear-gradient(180deg,#fff,#f7fafc);border-radius:8px">
+                        <strong>Office</strong>
+                        <p class="lead" style="margin:0.25rem 0">Sierra Leone Football Association<br>Siaka Stevens Street, Freetown</p>
+                        <p class="lead" style="margin:0">Phone: +232 76 123 456</p>
+                    </div>
+                </aside>
+            </div>
+        </div>
+
+        <footer style="margin-top:1rem"><div style="display:flex;justify-content:space-between;align-items:center"><div><strong>SLFA</strong></div><div class="lead">© <span id="year">2025</span></div></div></footer>
+    </main>
+
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

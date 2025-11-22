@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>SLFA — Players</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root{--accent:#1e7b2c;--muted:#6b7280;--bg:#f8fafc;--card:#ffffff;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;color:#0f172a}
+        *{box-sizing:border-box}
+        body{margin:0;background:linear-gradient(180deg,var(--bg),#eef2f7)}
+        .container{max-width:1100px;margin:0 auto;padding:1rem}
+        header{background:rgba(255,255,255,0.85);backdrop-filter:blur(6px);border-bottom:1px solid rgba(15,23,42,0.06)}
+        .nav{display:flex;align-items:center;justify-content:space-between}
+        nav ul{list-style:none;padding:0;margin:0;display:flex;gap:0.5rem}
+        nav a{padding:0.5rem 0.6rem;text-decoration:none;color:var(--muted);border-radius:6px;font-weight:600}
+        .card{background:var(--card);border-radius:12px;padding:1.25rem;box-shadow:0 6px 20px rgba(2,6,23,0.06)}
+        .players-controls{display:flex;gap:0.6rem;align-items:center;margin-bottom:0.8rem;flex-wrap:wrap}
+        .players-controls input, .players-controls select{padding:0.6rem;border-radius:8px;border:1px solid #e6e9ef}
+        .players-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.8rem}
+        .player-card{display:flex;gap:0.6rem;align-items:center;padding:0.6rem;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfdff);border:1px solid rgba(2,6,23,0.04)}
+        .player-card img{width:72px;height:72px;object-fit:cover;border-radius:8px}
+        .player-name{font-weight:700;margin:0}
+        .player-pos{color:var(--muted);font-size:0.92rem}
+        @media (max-width:880px){.players-grid{grid-template-columns:repeat(2,1fr)}}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container nav">
+            <a class="brand" href="home.html"><strong>SLFA</strong></a>
+            <nav aria-label="Primary">
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="players.html" class="active">Players</a></li>
+                    <li><a href="matches.html">Matches</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="card">
+            <h3>Our Players</h3>
+            <p class="lead">Search players by name or filter by position.</p>
+
+            <div class="players-controls">
+                <input id="playerSearch" type="search" placeholder="Search players by name...">
+                <select id="positionFilter"><option value="all">All positions</option><option value="Goalkeeper">Goalkeeper</option><option value="Defender">Defender</option><option value="Midfielder">Midfielder</option><option value="Forward">Forward</option></select>
+            </div>
+
+            <div id="playersGrid" class="players-grid">
+                <div class="player-card" data-name="Marcus Kamara" data-position="Goalkeeper"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=400&auto=format&fit=crop&crop=faces" alt="Marcus Kamara"><div><p class="player-name">Marcus Kamara</p><div class="player-pos">Goalkeeper</div></div></div>
+                <div class="player-card" data-name="Ibrahim Conteh" data-position="Defender"><img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?q=80&w=400&auto=format&fit=crop&crop=faces" alt="Ibrahim Conteh"><div><p class="player-name">Ibrahim Conteh</p><div class="player-pos">Defender</div></div></div>
+                <div class="player-card" data-name="Samuel Koroma" data-position="Defender"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400&auto=format&fit=crop&crop=faces" alt="Samuel Koroma"><div><p class="player-name">Samuel Koroma</p><div class="player-pos">Defender</div></div></div>
+                <div class="player-card" data-name="Abdul Thomas" data-position="Midfielder"><img src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=400&auto=format&fit=crop&crop=faces" alt="Abdul Thomas"><div><p class="player-name">Abdul Thomas</p><div class="player-pos">Midfielder</div></div></div>
+                <div class="player-card" data-name="Kevin Bangura" data-position="Midfielder"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=400&auto=format&fit=crop&crop=faces" alt="Kevin Bangura"><div><p class="player-name">Kevin Bangura</p><div class="player-pos">Midfielder</div></div></div>
+                <div class="player-card" data-name="Alimamy Sesay" data-position="Forward"><img src="https://images.unsplash.com/photo-1520975910126-7a0f1e6b3b6b?q=80&w=400&auto=format&fit=crop&crop=faces" alt="Alimamy Sesay"><div><p class="player-name">Alimamy Sesay</p><div class="player-pos">Forward</div></div></div>
+            </div>
+        </div>
+
+        <footer style="margin-top:1rem">
+            <div style="display:flex;justify-content:space-between;align-items:center"><div><strong>SLFA</strong></div><div class="lead">© <span id="year">2025</span></div></div>
+        </footer>
+    </main>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+        (function(){
+            function normalize(s){return (s||'').toLowerCase();}
+            const search = document.getElementById('playerSearch');
+            const filter = document.getElementById('positionFilter');
+            const grid = document.getElementById('playersGrid');
+            function applyFilter(){
+                const q = normalize(search.value);
+                const pos = filter.value;
+                Array.from(grid.children).forEach(card => {
+                    const name = normalize(card.dataset.name);
+                    const position = card.dataset.position || '';
+                    const matchesName = q === '' || name.indexOf(q) !== -1;
+                    const matchesPos = pos === 'all' || position === pos;
+                    card.style.display = (matchesName && matchesPos) ? '' : 'none';
+                });
+            }
+            search.addEventListener('input', applyFilter);
+            filter.addEventListener('change', applyFilter);
+        })();
+    </script>
+</body>
+</html>
