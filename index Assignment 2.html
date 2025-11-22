@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Sierra Leone Football Association (SLFA)</title>
+    <meta name="description" content="Official site of the Sierra Leone Football Association (SLFA). News, history, contact and ways to support football in Sierra Leone." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root{
+            --accent:#0e0f0e;
+            --muted:#0954e9;
+            --bg:#f5f5fad2;
+            --card:#ffffff;
+            --glass: rgba(255,255,255,0.6);
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            color: #141d33;
+        }
+        *{box-sizing:border-box}
+        html,body{height:100%;margin:0;background:linear-gradient(180deg,var(--bg),#eef2f7 60%);-webkit-font-smoothing:antialiased}
+        header{backdrop-filter: blur(6px);position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.7);border-bottom:1px solid rgba(15,23,42,0.06)}
+        .container{max-width:1100px;margin:0 auto;padding:1rem}
+        .nav{display:flex;align-items:center;gap:1rem;justify-content:space-between}
+        .brand{display:flex;align-items:center;gap:0.75rem;text-decoration:none;color:inherit}
+        .logo{width:48px;height:48px;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;background:linear-gradient(135deg,#fff 0%,#f1f5f9 100%);box-shadow:0 2px 6px rgba(2,6,23,0.08)}
+        .brand h1{font-size:1rem;margin:0;font-weight:700}
+        nav ul{list-style:none;padding:0;margin:0;display:flex;gap:0.5rem;align-items:center}
+        nav a{padding:0.5rem 0.6rem;text-decoration:none;color:var(--muted);border-radius:6px;font-weight:600}
+        nav a.active{color:var(--accent);background:rgba(30,123,44,0.08)}
+        main{padding:2rem 0}
+        .hero{
+            display:grid;
+            grid-template-columns:1fr 440px;
+            gap:1.2rem;
+            align-items:center;
+            margin-bottom:1.5rem;
+        }
+        .card{background:var(--card);border-radius:12px;padding:1.25rem;box-shadow:0 6px 20px rgba(2,6,23,0.06)}
+        .hero .intro h2{margin:0 0 .4rem 0;font-size:1.6rem}
+        .hero .intro p{margin:0;color:var(--muted);line-height:1.5}
+        .cta{margin-top:1rem;display:flex;gap:0.6rem}
+        .btn{background:var(--accent);color:#fff;padding:0.6rem 0.9rem;border-radius:8px;border:0;cursor:pointer;font-weight:600}
+        .btn.secondary{background:transparent;color:var(--accent);border:1px solid rgba(30,123,44,0.12)}
+        .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:0.6rem;margin-top:1rem}
+        .gallery img{width:100%;height:120px;object-fit:cover;border-radius:8px;display:block}
+        /* Players and matches styles */
+        .players-controls{display:flex;gap:0.6rem;align-items:center;margin-bottom:0.8rem;flex-wrap:wrap}
+        .players-controls input, .players-controls select{padding:0.6rem;border-radius:8px;border:1px solid #e6e9ef}
+        .players-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.8rem}
+        .player-card{display:flex;gap:0.6rem;align-items:center;padding:0.6rem;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfdff);border:1px solid rgba(2,6,23,0.04)}
+        .player-card img{width:72px;height:72px;object-fit:cover;border-radius:8px}
+        .player-info{flex:1}
+        .player-name{font-weight:700;margin:0}
+        .player-pos{color:var(--muted);font-size:0.92rem}
+        @media (max-width:880px){
+            .players-grid{grid-template-columns:repeat(2,1fr)}
+        }
+        .section-title{display:flex;align-items:baseline;gap:0.75rem;margin-bottom:0.8rem}
+        .section-title h3{margin:0;font-size:1.05rem}
+        .about-grid{display:grid;grid-template-columns:1fr 320px;gap:1rem;align-items:start}
+        .lead{color:var(--muted);line-height:1.6}
+        .contact-grid{display:grid;grid-template-columns:1fr 360px;gap:1rem}
+        form label{display:block;font-size:0.9rem;margin-bottom:0.35rem;font-weight:600}
+        form input,form textarea{width:100%;padding:0.6rem;border-radius:8px;border:1px solid #e6e9ef;font-size:0.95rem}
+        form textarea{min-height:120px;resize:vertical}
+        .meta{font-size:0.9rem;color:var(--muted)}
+        footer{padding:1.25rem 0;margin-top:2rem;border-top:1px solid rgba(15,23,42,0.04);background:transparent}
+        .flex{display:flex;gap:1rem;align-items:center}
+        .social a{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:8px;background:var(--glass);border:1px solid rgba(2,6,23,0.04);text-decoration:none;color:var(--muted)}
+        @media (max-width:880px){
+            .hero{grid-template-columns:1fr; padding:0}
+            .about-grid, .contact-grid{grid-template-columns:1fr}
+            .gallery img{height:100px}
+        }
+    </style>
+</head>
+<body>
+    <header role="banner">
+        <div class="container nav" aria-label="Main navigation">
+            <a class="brand" href="#home" data-link>
+                <span class="logo" aria-hidden="true">
+                    <!-- Simple football crest SVG -->
+                    <svg width="36" height="36" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="32" cy="32" r="30" fill="#fff"/>
+                        <path d="M32 6L39 18L54 22L43 32L46 46L32 40L18 46L21 32L10 22L25 18L32 6Z" fill="#1e7b2c"/>
+                        <circle cx="32" cy="26" r="6" fill="#fff"/>
+                    </svg>
+                </span>
+                <h1>SLFA</h1>
+            </a>
+
+            <nav aria-label="Primary">
+                <ul>
+                    <li><a href="#home" class="nav-link" data-link>Home</a></li>
+                    <li><a href="#players" class="nav-link" data-link>Players</a></li>
+                    <li><a href="#matches" class="nav-link" data-link>Matches</a></li>
+                    <li><a href="#about" class="nav-link" data-link>About</a></li>
+                    <li><a href="#contact" class="nav-link" data-link>Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" id="app">
+        <!-- Home -->
+        <section id="home" class="page">
+            <div class="hero">
+                <div class="card intro">
+                    <div class="section-title">
+                        <h3>Welcome to the Sierra Leone Football Association</h3>
+                    </div>
+                    <h2>Growing football across Sierra Leone with passion and integrity</h2>
+                    <p class="lead">The Sierra Leone Football Association (SLFA) governs, promotes and develops football at all levels across the country — from grassroots programs to national teams. We are committed to transparency, talent development, and delivering memorable experiences for fans and players alike.</p>
+
+                    <div class="cta">
+                        <button class="btn" data-link href="#about">Learn More</button>
+                        <button class="btn secondary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact Us</button>
+                    </div>
+
+                    <div class="gallery" aria-hidden="false">
+                        <img src="https://images.unsplash.com/photo-1521412644187-c49fa049e84d?q=80&w=600&auto=format&fit=crop&crop=faces" srcset="https://images.unsplash.com/photo-1521412644187-c49fa049e84d?q=80&w=400&auto=format&fit=crop&crop=faces 400w, https://images.unsplash.com/photo-1521412644187-c49fa049e84d?q=80&w=800&auto=format&fit=crop&crop=faces 800w" alt="Football kit and ball on grass" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1508385082359-fc0e8d0a1c6a?q=80&w=600&auto=format&fit=crop&crop=faces" srcset="https://images.unsplash.com/photo-1508385082359-fc0e8d0a1c6a?q=80&w=400&auto=format&fit=crop&crop=faces 400w, https://images.unsplash.com/photo-1508385082359-fc0e8d0a1c6a?q=80&w=800&auto=format&fit=crop&crop=faces 800w" alt="Fans cheering at a football match" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1517927033932-b3d2c0a7b0b9?q=80&w=600&auto=format&fit=crop&crop=faces" srcset="https://images.unsplash.com/photo-1517927033932-b3d2c0a7b0b9?q=80&w=400&auto=format&fit=crop&crop=faces 400w, https://images.unsplash.com/photo-1517927033932-b3d2c0a7b0b9?q=80&w=800&auto=format&fit=crop&crop=faces 800w" alt="Soccer stadium at dusk" loading="lazy">
+                    </div>
+                </div>
+
+                <aside class="card" aria-labelledby="news-title">
+                    <div style="display:flex;align-items:center;justify-content:space-between">
+                        <h4 id="news-title" style="margin:0">Latest News</h4>
+                        <span class="meta">Updated today</span>
+                    </div>
+                    <ul style="padding-left:1rem;margin-top:0.8rem">
+                        <li style="margin-bottom:0.5rem"><strong>National U-20 Trials:</strong> Successful open trials held in Freetown.</li>
+                        <li style="margin-bottom:0.5rem"><strong>Coach Development:</strong> New coaching licence courses announced.</li>
+                        <li style="margin-bottom:0.5rem"><strong>Grassroots Grants:</strong> Funding available for local academies.</li>
+                    </ul>
+                    <p class="meta" style="margin-top:0.6rem">Follow us for live updates and fixtures.</p>
+                </aside>
+            </div>
+
+            <div class="card" style="margin-bottom:1rem">
+                <div class="section-title"><h3>Our Mission</h3></div>
+                <p class="lead">We aim to elevate standards of football through inclusive programs, ethical governance, and strategic partnerships. By investing in coaches, referees and infrastructure, we create pathways for young talent to reach professional levels and represent Sierra Leone with pride.</p>
+            </div>
+        </section>
+
+        <!-- Our Players -->
+        <section id="players" class="page" hidden>
+            <div class="card">
+                <div class="section-title"><h3>Our Players</h3></div>
+
+                <p class="lead">Meet some of the players representing Sierra Leone — search by name or filter by playing position.</p>
+
+                <div class="players-controls" role="search" aria-label="Search players">
+                    <input id="playerSearch" type="search" placeholder="Search players by name..." aria-label="Search players by name">
+                    <select id="positionFilter" aria-label="Filter by position">
+                        <option value="all">All positions</option>
+                        <option value="Goalkeeper">Goalkeeper</option>
+                        <option value="Defender">Defender</option>
+                        <option value="Midfielder">Midfielder</option>
+                        <option value="Forward">Forward</option>
+                    </select>
+                </div>
+
+                <div class="players-grid" id="playersGrid">
+                    <div class="player-card" data-name="Marcus Kamara" data-position="Goalkeeper">
+                        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=400&auto=format&fit=crop&crop=faces" alt="Marcus Kamara">
+                        <div class="player-info">
+                            <p class="player-name">Marcus Kamara</p>
+                            <div class="player-pos">Goalkeeper</div>
+                        </div>
+                    </div>
+
+                    <div class="player-card" data-name="Ibrahim Conteh" data-position="Defender">
+                        <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?q=80&w=400&auto=format&fit=crop&crop=faces" alt="Ibrahim Conteh">
+                        <div class="player-info">
+                            <p class="player-name">Ibrahim Conteh</p>
+                            <div class="player-pos">Defender</div>
+                        </div>
+                    </div>
+
+                    <div class="player-card" data-name="Samuel Koroma" data-position="Defender">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400&auto=format&fit=crop&crop=faces" alt="Samuel Koroma">
+                        <div class="player-info">
+                            <p class="player-name">Samuel Koroma</p>
+                            <div class="player-pos">Defender</div>
+                        </div>
+                    </div>
+
+                    <div class="player-card" data-name="Abdul Thomas" data-position="Midfielder">
+                        <img src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=400&auto=format&fit=crop&crop=faces" alt="Abdul Thomas">
+                        <div class="player-info">
+                            <p class="player-name">Abdul Thomas</p>
+                            <div class="player-pos">Midfielder</div>
+                        </div>
+                    </div>
+
+                    <div class="player-card" data-name="Kevin Bangura" data-position="Midfielder">
+                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=400&auto=format&fit=crop&crop=faces" alt="Kevin Bangura">
+                        <div class="player-info">
+                            <p class="player-name">Kevin Bangura</p>
+                            <div class="player-pos">Midfielder</div>
+                        </div>
+                    </div>
+
+                    <div class="player-card" data-name="Alimamy Sesay" data-position="Forward">
+                        <img src="https://images.unsplash.com/photo-1520975910126-7a0f1e6b3b6b?q=80&w=400&auto=format&fit=crop&crop=faces" alt="Alimamy Sesay">
+                        <div class="player-info">
+                            <p class="player-name">Alimamy Sesay</p>
+                            <div class="player-pos">Forward</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Matches -->
+        <section id="matches" class="page" hidden>
+            <div class="card">
+                <div class="section-title"><h3>Matches</h3></div>
+
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+                    <div>
+                        <h4 style="margin-top:0">Upcoming Matches</h4>
+                        <ul style="padding-left:1rem">
+                            <li style="margin-bottom:0.6rem"><strong>SL National Team vs. Liberia</strong> — 2025-12-03 • 18:00 • Siaka Stevens Stadium</li>
+                            <li style="margin-bottom:0.6rem"><strong>U-20 Friendly: SL vs. Guinea</strong> — 2025-12-10 • 15:00 • Connaught Field</li>
+                            <li style="margin-bottom:0.6rem"><strong>Charity Cup Final</strong> — 2026-01-05 • 16:00 • National Stadium</li>
+                        </ul>
+                        <p class="meta">Fixtures are subject to change. Follow official channels for live updates.</p>
+                    </div>
+
+                    <div>
+                        <h4 style="margin-top:0">Past Results</h4>
+                        <ul style="padding-left:1rem">
+                            <li style="margin-bottom:0.6rem"><strong>SL 2–1 Ghana</strong> — 2025-11-14 • Friendly • Siaka Stevens Stadium</li>
+                            <li style="margin-bottom:0.6rem"><strong>SL 0–0 Senegal</strong> — 2025-10-28 • Qualifier • National Stadium</li>
+                            <li style="margin-bottom:0.6rem"><strong>SL U-20 3–2 Liberia U-20</strong> — 2025-09-05 • Tournament • Connaught Field</li>
+                        </ul>
+                        <p class="meta">Results show scoreline, competition type, and venue.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section id="about" class="page" hidden>
+            <div class="card">
+                <div class="section-title">
+                    <h3>About Us</h3>
+                </div>
+                <div class="about-grid">
+                    <div>
+                        <h2>History and Purpose</h2>
+                        <p class="lead">Founded to organize and chart the growth of football in Sierra Leone, the SLFA oversees domestic competitions, amateur and professional leagues, national teams, and youth development. We operate with transparency, fostering partnerships with clubs, communities and international federations to deliver sustainable progress.</p>
+
+                        <h4 style="margin-top:1rem">What we do</h4>
+                        <ul>
+                            <li>Organize national competitions and cup tournaments.</li>
+                            <li>Develop coaching and refereeing standards.</li>
+                            <li>Support grassroots academies and school programs.</li>
+                            <li>Manage national teams and international representation.</li>
+                        </ul>
+
+                        <h4 style="margin-top:1rem">Values</h4>
+                        <p class="lead">Integrity, inclusion, excellence and community. We are committed to providing equal opportunities and creating a safe, competitive environment for all participants.</p>
+                    </div>
+
+                    <aside>
+                        <figure style="margin:0">
+                            <img src="https://images.unsplash.com/photo-1517927033932-b3d2c0a7b0b9?q=80&w=900&auto=format&fit=crop&crop=faces" alt="Football stadium" style="width:100%;height:220px;object-fit:cover;border-radius:10px" loading="lazy">
+                            <figcaption class="meta" style="margin-top:0.6rem">National stadium — hosting community and national events.</figcaption>
+                        </figure>
+
+                        <div style="margin-top:1rem;padding:0.8rem;background:linear-gradient(180deg,#fff,#f7fafc);border-radius:8px">
+                            <strong>Office</strong>
+                            <p class="meta" style="margin:0.25rem 0">Sierra Leone Football Association<br>Siaka Stevens Street, Freetown</p>
+                            <p class="meta" style="margin:0">Phone: +232 76 123 456</p>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="page" hidden>
+            <div class="card">
+                <div class="section-title">
+                    <h3>Contact Us</h3>
+                </div>
+
+                <div class="contact-grid">
+                    <div>
+                        <p class="lead">Reach out to the SLFA for media enquiries, partnership opportunities, grassroots programs, or general questions. We aim to respond within 3 working days.</p>
+
+                        <form id="contactForm" aria-label="Contact form" novalidate>
+                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;margin-bottom:0.6rem">
+                                <label>
+                                    <span>Name</span>
+                                    <input type="text" name="name" id="name" required placeholder="Your full name">
+                                </label>
+                                <label>
+                                    <span>Email</span>
+                                    <input type="email" name="email" id="email" required placeholder="you@example.com">
+                                </label>
+                            </div>
+
+                            <label>
+                                <span>Subject</span>
+                                <input type="text" name="subject" id="subject" required placeholder="Subject">
+                            </label>
+
+                            <label style="margin-top:0.6rem">
+                                <span>Message</span>
+                                <textarea name="message" id="message" required placeholder="Write your message here"></textarea>
+                            </label>
+
+                            <div style="display:flex;gap:0.6rem;margin-top:0.75rem;align-items:center">
+                                <button class="btn" type="submit">Send Message</button>
+                                <button type="button" class="btn secondary" onclick="document.getElementById('contactForm').reset()">Reset</button>
+                                <div id="formStatus" class="meta" style="margin-left:0.5rem"></div>
+                            </div>
+                        </form>
+
+                        <p class="meta" style="margin-top:0.8rem">Alternatively, email us at <a href="mailto:info@slfa.sl">info@slfa.sl</a> or call +232 76 123 456</p>
+                    </div>
+
+                    <aside>
+                        <div class="card" style="padding:0;">
+                            <iframe
+                                loading="lazy"
+                                width="100%"
+                                height="260"
+                                style="border:0;border-radius:10px"
+                                referrerpolicy="no-referrer-when-downgrade"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15978.30837451227!2d-13.2610289511729!3d8.492834599999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOMKwMjknNDkuMCJOIDEzwrAxNScwMC4wIlc!5e0!3m2!1sen!2s!4v1700460000000">
+                            </iframe>
+                            <div style="padding:0.85rem">
+                                <strong>Visit Us</strong>
+                                <p class="meta" style="margin:0.4rem 0">SLFA Headquarters<br>Freetown, Sierra Leone</p>
+                                <div style="display:flex;gap:0.5rem;margin-top:0.6rem" class="social">
+                                    <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M22 12a10 10 0 10-11.6 9.9v-7h-2.5v-3h2.5V9c0-2.5 1.5-3.9 3.7-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6v1.9h2.8l-.4 3h-2.4v7A10 10 0 0022 12z" fill="#1877F2"/></svg>
+                                    </a>
+                                    <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M23 4.5c-.7.3-1.4.5-2.2.6.8-.5 1.4-1.3 1.7-2.2-.8.5-1.6.8-2.6 1C19.4 3 18.3 2.5 17 2.5c-2 0-3.5 1.8-3 3.6C10 6 6.7 4 4 1.6c-1 1.8-.4 4 1.1 5.2-.6 0-1.2-.2-1.7-.5v.1c0 1.9 1.2 3.6 3 4-.5.1-1.1.2-1.7.2-.4 0-.7 0-1-.1 1.2 1.8 3.3 3 5.7 3-2 1.4-4.3 2.2-6.9 2.2-.4 0-.8 0-1.2-.1 2.3 1.5 5 2.4 7.9 2.4 9.5 0 14.7-7.9 14.7-14.8v-.7c1-.7 1.8-1.5 2.5-2.5-.9.4-1.9.6-2.9.9z" fill="#1DA1F2"/></svg>
+                                    </a>
+                                    <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zM12 7a5 5 0 100 10 5 5 0 000-10zm6.5-3a1.5 1.5 0 110 3 1.5 1.5 0 010-3z" fill="#E1306C"/></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.6rem">
+                <div class="flex">
+                    <span style="display:inline-flex;align-items:center;gap:0.6rem">
+                        <span class="logo" style="width:36px;height:36px">
+                            <svg width="28" height="28" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="32" cy="32" r="30" fill="#fff"/>
+                                <path d="M32 6L39 18L54 22L43 32L46 46L32 40L18 46L21 32L10 22L25 18L32 6Z" fill="#1e7b2c"/>
+                            </svg>
+                        </span>
+                        <div>
+                            <strong>SLFA</strong><div class="meta">Sierra Leone Football Association</div>
+                        </div>
+                    </span>
+                </div>
+                <div class="meta">© <span id="year"></span> SLFA. All rights reserved.</div>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        // Simple SPA navigation by hash with graceful fallback
+        const pages = document.querySelectorAll('.page');
+        const links = document.querySelectorAll('[data-link], .nav-link');
+
+        function showPage(id){
+            pages.forEach(p => p.hidden = p.id !== id);
+            links.forEach(a => {
+                try {
+                    const href = a.getAttribute('href') || a.dataset.href || a.getAttribute('data-href');
+                    const linkHash = a.getAttribute('href')?.replace(/^.*#/, '') || a.dataset.linkTo;
+                    if (linkHash === id) a.classList.add('active'); else a.classList.remove('active');
+                } catch(e){}
+            });
+        }
+
+        function handleRoute(){
+            const hash = location.hash.replace('#','') || 'home';
+            showPage(hash);
+        }
+
+        window.addEventListener('hashchange', handleRoute);
+        document.addEventListener('DOMContentLoaded', () => {
+            // attach click handlers to elements that use data-link but aren't anchors
+            document.querySelectorAll('[data-link]').forEach(el => {
+                el.addEventListener('click', (e) => {
+                    const href = el.getAttribute('href') || '#home';
+                    location.hash = href.replace(/^.*#/, '');
+                    e.preventDefault();
+                });
+            });
+
+            // initialize
+            handleRoute();
+
+            // Year in footer
+            document.getElementById('year').textContent = new Date().getFullYear();
+        });
+
+        // Contact form handling (client-side)
+        (function(){
+            const form = document.getElementById('contactForm');
+            const status = document.getElementById('formStatus');
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                status.textContent = '';
+
+                const data = {
+                    name: form.name.value.trim(),
+                    email: form.email.value.trim(),
+                    subject: form.subject.value.trim(),
+                    message: form.message.value.trim()
+                };
+
+                // Basic validation
+                if(!data.name || !data.email || !data.subject || !data.message){
+                    status.textContent = 'Please fill all fields.';
+                    return;
+                }
+                // Simple email check
+                if(!/^\S+@\S+\.\S+$/.test(data.email)){
+                    status.textContent = 'Please enter a valid email.';
+                    return;
+                }
+
+                // Simulate sending and show success message.
+                // To send real emails, replace the fetch URL with your form endpoint (Formspree, Netlify Forms, server)
+                try {
+                    status.textContent = 'Sending...';
+                    // Example: send to Formspree (replace {your-id} with your form id)
+                    // const resp = await fetch('https://formspree.io/f/{your-id}', {
+                    //   method: 'POST',
+                    //   headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+                    //   body: JSON.stringify(data)
+                    // });
+                    // if(!resp.ok) throw new Error('Network error');
+
+                    // For demo: simulate network latency
+                    await new Promise(r => setTimeout(r, 800));
+                    form.reset();
+                    status.textContent = 'Message sent. Thank you — we will reply soon.';
+                } catch (err) {
+                    status.textContent = 'An error occurred while sending. Please try again later.';
+                    console.error(err);
+                }
+            });
+        })();
+    </script>
+    <script>
+        // Players search & position filter
+        (function(){
+            function normalize(s){return (s||'').toLowerCase();}
+            const search = document.getElementById('playerSearch');
+            const filter = document.getElementById('positionFilter');
+            const grid = document.getElementById('playersGrid');
+            if(!grid) return; // nothing to do on pages that don't include players
+
+            function applyFilter(){
+                const q = normalize(search.value);
+                const pos = filter.value;
+                Array.from(grid.children).forEach(card => {
+                    const name = normalize(card.dataset.name);
+                    const position = card.dataset.position || '';
+                    const matchesName = q === '' || name.indexOf(q) !== -1;
+                    const matchesPos = pos === 'all' || position === pos;
+                    card.style.display = (matchesName && matchesPos) ? '' : 'none';
+                });
+            }
+
+            search && search.addEventListener('input', applyFilter);
+            filter && filter.addEventListener('change', applyFilter);
+        })();
+    </script>
+</body>
+</html>
